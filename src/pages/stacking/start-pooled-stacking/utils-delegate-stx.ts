@@ -174,6 +174,11 @@ export function createHandleSubmit({
 
     const delegateStxOptions = getOptions(values, poxInfo, stackingContract, client, network);
 
+    // More serialisation issues in Connect
+    if ('client' in delegateStxOptions) {
+      delete delegateStxOptions.client;
+    }
+
     showContractCall({
       ...delegateStxOptions,
       onFinish() {
